@@ -15,6 +15,8 @@ Jeu de tarot divinatoire permettant de tirer les cartes et de connaître son ave
 Espace d’état : tous les thèmes disponibles : {amour, famille, travail}
 Paramètre(s) : Plus ou moins de chance d’avoir le thème que l’on souhaite selon l’humeur de la voyante
 
+<a href="https://zupimages.net/viewer.php?id=20/12/0yog.jpg"><img src="https://zupimages.net/up/20/12/0yog.jpg" alt="" /></a>
+
 ### Composante numéro 2 : Carte choisie
 
 Espace d’état : tirage du tarot : 22 cartes
