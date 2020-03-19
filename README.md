@@ -1,6 +1,4 @@
-Auteur :
-VALLEE Roxane
-VEYSSET Sarah
+#### Auteur : VALLEE Roxane & VEYSSET Sarah
 
 # Fortune Game
 
