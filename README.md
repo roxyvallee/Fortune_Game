@@ -6,7 +6,7 @@ Ce jeu est réalisé sur Unity.
 
 ## 1/ Présentation et descriptif du jeu
 
-<a href="https://zupimages.net/viewer.php?id=20/12/ehzu.jpg"><img src="https://zupimages.net/up/20/12/ehzu.jpg" alt="" /></a>
+<a href="https://zupimages.net/viewer.php?id=20/12/ehzu.jpg"><img src="https://zupimages.net/up/20/12/ehzu.jpg" alt="" size="200"/></a>
 
 Jeu de tarot divinatoire permettant de tirer les cartes et de connaître son avenir à partir de différents paramètres. Grâce à la voyante, vous aurez le choix entre découvrir votre avenir via l'horoscope ou découvrir votre avenir via un tirage de carte. Mais attention, à celle-ci qui pourrait influencer sur le tirage selon son humeur.
 
