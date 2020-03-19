@@ -1,3 +1,7 @@
+Auteur :
+VALLEE Roxane
+VEYSSET Sarah
+
 # Fortune Game
 
 Projet de math en IMAC 2 :  Jeu Oracle où vous pouvez tirer des cartes pour connaître votre avenir à partir de différents paramètres.
