@@ -27,9 +27,7 @@ Paramètre(s) : Plus ou moins de chance d’avoir une bonne carte en fonction de
 
 
 ### Composante numéro 3 : À l’Envers ou à l’endroit
-
 <a href="https://zupimages.net/viewer.php?id=20/12/8mt6.png"><img src="https://zupimages.net/up/20/12/8mt6.png" alt="" width="400"/></a>
-
 Espace d’état : tirage du tarot : 22 cartes
 Paramètre(s) : Plus ou moins de chance qu’elle soit à l’endroit (bonne chance) en fonction de l’humeur de la voyante. 
 
