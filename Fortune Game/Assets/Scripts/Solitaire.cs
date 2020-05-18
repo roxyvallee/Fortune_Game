@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
-public class FortuneGame : MonoBehaviour
+public class Solitaire : MonoBehaviour
 {
     public Sprite[] cardFaces;
     public GameObject cardPrefab;
@@ -14,12 +15,19 @@ public class FortuneGame : MonoBehaviour
     public static string[] values = new string[] {"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "V", "Q", "K"};
     public List<string>[] bottoms;
     public List<string>[] tops;
-    
+
+    private List<string> bottom0 = new List<string>();
+    private List<string> bottom1 = new List<string>();    
+    private List<string> bottom2 = new List<string>();    
+    private List<string> bottom3 = new List<string>();    
+    private List<string> bottom4 = new List<string>();    
+    private List<string> bottom5 = new List<string>();    
+    private List<string> bottom6 = new List<string>();        
     public List<string> deck;
     // Start is called before the first frame update
     void Start()
     {
-        bottoms = new List<string>[] 
+       bottoms = new List<string>[] {bottom0, bottom1, bottom2, bottom3, bottom4, bottom5, bottom6}; 
         PlayCards();
     }
 
@@ -38,8 +46,9 @@ public class FortuneGame : MonoBehaviour
             print(card);
         }
 
-        SolitaireDeal();
-        NumberBottom();
+        SolitaireSort();
+        StartCoroutine(SolitaireDeal());
+        //NumberBottom();
     }
 
     // Création de la pioche avec toutes les cartes
@@ -57,7 +66,7 @@ public class FortuneGame : MonoBehaviour
     }
 
 
-    void Shuffle<T>(List<T> list)
+    void Shuffle<T>(List<T> list) // create random here
     {
         System.Random random = new System.Random();
         int n = list.Count;
@@ -71,18 +80,42 @@ public class FortuneGame : MonoBehaviour
         }
     }
 
-
-    void SolitaireDeal()
+    void SolitaireSort()
     {
-        
-        foreach (string card in deck)
+        for(int i = 0; i < 7; i++)
         {
-            GameObject newCard = Instantiate(cardPrefab, transform.position, Quaternion.identity);
-            newCard.name = card;
-            newCard.GetComponent<Selectable>().faceUp = true;
+            for(int j = i; j < 7; j++ )
+            {
+                bottoms[j].Add(deck.Last <string>());
+                deck.RemoveAt(deck.Count - 1);
+            }
         }
     }
 
+    IEnumerator SolitaireDeal()
+    {
+        for(int i = 0; i < 7; i++)
+        {
+            float yOffset = 0;
+            float zOffset = 0.03f;
+            foreach (string card in bottoms[i])
+            {
+                yield return new WaitForSeconds(0.01f);
+                GameObject newCard = Instantiate(cardPrefab,new Vector3(bottomPos[i].transform.position.x, bottomPos[i].transform.position.y - yOffset, bottomPos[i].transform.position.z - zOffset), Quaternion.identity, bottomPos[i].transform);
+                newCard.name = card;
+
+                if(card == bottoms[i][bottoms[i].Count - 1])
+                {
+                    newCard.GetComponent<Selectable>().faceUp = true;
+                }
+                yOffset = yOffset + 0.3f;
+                zOffset = zOffset + 0.03f;
+                
+            }
+        }
+        
+    }
+/*
     void NumberBottom()
     {
         float xOffset = 0;
@@ -100,4 +133,5 @@ public class FortuneGame : MonoBehaviour
             xOffset += 2.0f; 
         }
     }
+*/
 }

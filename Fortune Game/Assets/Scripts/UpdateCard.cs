@@ -8,19 +8,19 @@ public class UpdateCard : MonoBehaviour
     public Sprite cardBack;
     private SpriteRenderer spriteRenderer;
     private Selectable selectable;
-    private FortuneGame fortuneGame;
+    private Solitaire solitaire;
     // Start is called before the first frame update
-    void Start()
+     void Start()
     {
-        List<string> deck = FortuneGame.GenerateDeck();
-        fortuneGame = FindObjectOfType<FortuneGame>();
+        List<string> deck = Solitaire.GenerateDeck();
+        solitaire = FindObjectOfType<Solitaire>();
 
         int i = 0;
         foreach(string card in deck)
         {
             if(this.name == card)
             {
-                cardFace = fortuneGame.cardFaces[i];
+                cardFace = solitaire.cardFaces[i];
                 break;
             }
             i++;
