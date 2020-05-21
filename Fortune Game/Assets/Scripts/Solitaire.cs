@@ -80,6 +80,12 @@ public class Solitaire : MonoBehaviour
         int n = list.Count;
         while(n > 1)
         {
+            // rajouter ici probabilité pour suit et value
+            // probabilité de suit
+            // probabilité de value
+            // forme une carte dont on recherche la value dans deck
+            // retourne l'index de la carte choisie
+            // si la carte n'est pas trouvée ( = -1) on recommence 
             int k = random.Next(n);
             n--;
             T temp = list[k];
@@ -87,6 +93,18 @@ public class Solitaire : MonoBehaviour
             list[n] = temp;
         }
     }
+    /*
+    public static int FindIndex(List<T> list, string card)
+    {
+        foreach(string s in deck)
+        {
+            // si on trouve la carte
+            if()
+        }
+        return -1;
+        // si on trouve pas la carte on doit recommencer
+    }
+    */
 
     void SolitaireSort()
     {
@@ -111,7 +129,7 @@ public class Solitaire : MonoBehaviour
                 yield return new WaitForSeconds(0.01f);
                 GameObject newCard = Instantiate(cardPrefab,new Vector3(bottomPos[i].transform.position.x, bottomPos[i].transform.position.y - yOffset, bottomPos[i].transform.position.z - zOffset), Quaternion.identity, bottomPos[i].transform);
                 newCard.name = card;
-
+                newCard.GetComponent<Selectable>().row = i;
                 if(card == bottoms[i][bottoms[i].Count - 1])
                 {
                     newCard.GetComponent<Selectable>().faceUp = true;
@@ -196,6 +214,7 @@ public class Solitaire : MonoBehaviour
                 newTopCard.name = card;
                 tripsOnDisplay.Add(card);
                 newTopCard.GetComponent<Selectable>().faceUp = true;
+                newTopCard.GetComponent<Selectable>().inDeckPile = true;
             }
 
             deckLocation++;
