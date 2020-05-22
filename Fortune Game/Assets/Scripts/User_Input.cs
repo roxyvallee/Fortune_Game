@@ -54,6 +54,7 @@ public class User_Input : MonoBehaviour
     {
         print("clicked on deck");
         solitaire.DealFromDeck();
+        slot1 = this.gameObject;
     }
 
     void Card(GameObject selected)
@@ -69,40 +70,51 @@ public class User_Input : MonoBehaviour
                 slot1 = this.gameObject;
             }
         }
+        else if(selected.GetComponent<Selectable>().inDeckPile) // if the card clicked on is in the deck pile with the trips            
+        {
+            // if the card is not blocked
+            if(!Blocked(selected))
+            {
+                print("select card");
+                // select it
+                slot1 = selected;
+            }
+            
+        }
+        else
+        {
+            if(slot1 == this.gameObject)
+            {
+                slot1 = selected;
+            }
+            
+            else if(slot1 != selected) // if there is a card already selected ( and it's not the same card)
+            {
+                
+                // if the new card is eligable to stack out on the old card
+                
+                if(Stackable(selected))
+                {
+                    // stack it
+                    Stack(selected);
+                }
+                else
+                {
+                    // select the new card
+                    slot1 = selected;
+                } 
+                
+                
             
 
-        // if the card clicked on is in the deck pile with the trips
-            // if the card is not blocked
-            // select it
+            }
+        }
+            
 
         // if the card is face up
             // if there is no cards currently selected 
-            // select it
-        if(slot1 == this.gameObject)
-        {
-            slot1 = selected;
-        }
-        
-        else if(slot1 != selected) // if there is a card already selected ( and it's not the same card)
-        {
-            
-            // if the new card is eligable to stack out on the old card
-            
-            if(Stackable(selected))
-            {
-                // stack it
-                Stack(selected);
-            }
-            else
-            {
-                // select the new card
-                slot1 = selected;
-            } 
-            
-            
-           
-
-        }
+            // select i t
+       
         
         // else if there is already selected and it's the same card
             // if the time is short enough then it is a double click
