@@ -86,6 +86,10 @@ public class Solitaire : MonoBehaviour
             // forme une carte dont on recherche la value dans deck
             // retourne l'index de la carte choisie
             // si la carte n'est pas trouvée ( = -1) on recommence 
+            // 0 --------------X-------- 1 rand = 0.6
+            // 0 -7-- As-X-2-------------1 rand = X
+            // 1 = noir
+            // 0 = rouge
             int k = random.Next(n);
             n--;
             T temp = list[k];
