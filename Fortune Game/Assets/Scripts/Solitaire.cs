@@ -7,7 +7,6 @@ public class Solitaire : MonoBehaviour
 {
     public Sprite[] cardFaces;
     public GameObject cardPrefab;
-    public GameObject cardEmpty;
     public GameObject[] bottomPos;
     public GameObject[] topPos;
     public GameObject deckButton;
@@ -46,6 +45,10 @@ public class Solitaire : MonoBehaviour
     
     public void PlayCards()
     {
+        foreach(List<string> list in bottoms)
+        {
+            list.Clear();
+        }
         deck = GenerateDeck();
         Shuffle(deck);
         foreach(string card in deck)
