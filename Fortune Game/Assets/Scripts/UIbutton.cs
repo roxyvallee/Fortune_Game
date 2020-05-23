@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class UIbutton : MonoBehaviour
 {
+    public GameObject winPanel;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,6 +15,12 @@ public class UIbutton : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void PlayAgain()
+    {
+        winPanel.SetActive(false);
+        ResetScene();
     }
 
     public void ResetScene()
