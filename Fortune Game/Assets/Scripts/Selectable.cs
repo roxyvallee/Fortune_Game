@@ -62,7 +62,7 @@ public class Selectable : MonoBehaviour
             {
                 value = 10;
             }
-            if(valueString == "V")
+            if(valueString == "J")
             {
                 value = 11;
             }

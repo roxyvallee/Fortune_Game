@@ -13,7 +13,7 @@ public class Solitaire : MonoBehaviour
     public GameObject deckButton;
     
     public static string[] suits = new string[] {"C", "D", "H", "S"};
-    public static string[] values = new string[] {"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "V", "Q", "K"};
+    public static string[] values = new string[] {"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
     public List<string>[] bottoms;
     public List<string>[] tops;
     public List<string> tripsOnDisplay = new List<string>(); // trois cartes du deck affichées 
