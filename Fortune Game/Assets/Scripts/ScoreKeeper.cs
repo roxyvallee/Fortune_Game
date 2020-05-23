@@ -9,16 +9,16 @@ public class ScoreKeeper : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(HasWon())
-        {
-            Win();
-        }
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(HasWon())
+        {
+            Win();
+        }
     }
 
     public bool HasWon()
@@ -27,6 +27,7 @@ public class ScoreKeeper : MonoBehaviour
         foreach(Selectable topstack in topStacks)
         {
             i+= topstack.value;
+            print(topstack.value);
         }
         if( i >= 52)
         {
