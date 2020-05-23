@@ -27,13 +27,14 @@ public class Solitaire : MonoBehaviour
     private List<string> bottom6 = new List<string>();        
     public List<string> deck;
     public List<string> discardPile = new List<string>();
-    public int deckLocation; // où on se trouve dans le deck
+    private int deckLocation; // où on se trouve dans le deck
     private int trips;
     private int tripsRemainder;
     // Start is called before the first frame update
     void Start()
     {
-       bottoms = new List<string>[] {bottom0, bottom1, bottom2, bottom3, bottom4, bottom5, bottom6}; 
+        bottoms = new List<string>[] {bottom0, bottom1, bottom2, bottom3, bottom4, bottom5, bottom6}; 
+        print("begin party");
         PlayCards();
     }
 
@@ -49,12 +50,15 @@ public class Solitaire : MonoBehaviour
         {
             list.Clear();
         }
+
         deck = GenerateDeck();
         Shuffle(deck);
+        print("test");
+        /*
         foreach(string card in deck)
         {
             print(card);
-        }
+        }*/
 
         SolitaireSort();
         StartCoroutine(SolitaireDeal());
@@ -133,8 +137,8 @@ public class Solitaire : MonoBehaviour
             float zOffset = 0.03f;
             foreach (string card in bottoms[i])
             {
-                yield return new WaitForSeconds(0.01f);
-                GameObject newCard = Instantiate(cardPrefab,new Vector3(bottomPos[i].transform.position.x, bottomPos[i].transform.position.y - yOffset, bottomPos[i].transform.position.z - zOffset), Quaternion.identity, bottomPos[i].transform);
+                yield return new WaitForSeconds(0.05f);
+                GameObject newCard = Instantiate(cardPrefab, new Vector3(bottomPos[i].transform.position.x, bottomPos[i].transform.position.y - yOffset, bottomPos[i].transform.position.z - zOffset), Quaternion.identity, bottomPos[i].transform);
                 newCard.name = card;
                 newCard.GetComponent<Selectable>().row = i;
                 if(card == bottoms[i][bottoms[i].Count - 1])

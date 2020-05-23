@@ -384,91 +384,6 @@ MonoBehaviour:
   row: 0
   faceUp: 0
   inDeckPile: 0
---- !u!1 &473011340 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4665379144543911906, guid: 519c839a142fead4ebbf5c36562eacfe,
-    type: 3}
-  m_PrefabInstance: {fileID: 4665379144077388654}
-  m_PrefabAsset: {fileID: 0}
---- !u!61 &473011341
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 473011340}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.56, y: 7.26}
-    newSize: {x: 13.57, y: 19.2}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 5, y: 7.26}
-  m_EdgeRadius: 0
---- !u!50 &473011342
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 473011340}
-  m_BodyType: 2
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!114 &473011343
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 473011340}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1410489acbf65f1429659813f85a4294, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cardFace: {fileID: 0}
-  cardBack: {fileID: 21300000, guid: 2c36a9f0735e8d94ba058b3fc0495128, type: 3}
---- !u!114 &473011344
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 473011340}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc2630ff379f86848903f7c1ff406f95, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  top: 0
-  suit: 
-  value: 0
-  row: 0
-  faceUp: 0
-  inDeckPile: 0
 --- !u!1 &492674054
 GameObject:
   m_ObjectHideFlags: 0
@@ -2225,7 +2140,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 948f1049294c2d94dad0503235a41480, type: 3}
   - {fileID: 21300000, guid: f27df007151451245bd0691de2b80895, type: 3}
   - {fileID: 21300000, guid: 6821a2460c8157b4e8dc36afd5c2c0d8, type: 3}
-  cardPrefab: {fileID: 473011340}
+  cardPrefab: {fileID: 4665379144543911906, guid: 519c839a142fead4ebbf5c36562eacfe,
+    type: 3}
   bottomPos:
   - {fileID: 261069260}
   - {fileID: 1199668601}
@@ -2243,7 +2159,6 @@ MonoBehaviour:
   tripsOnDisplay: []
   deck: []
   discardPile: []
-  deckLocation: 0
 --- !u!4 &1419709581
 Transform:
   m_ObjectHideFlags: 0
@@ -3016,14 +2931,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4665379144543911904, guid: 519c839a142fead4ebbf5c36562eacfe,
+    - target: {fileID: 0}
+      propertyPath: cardBack
+      value: 
+      objectReference: {fileID: 21300000, guid: 2c36a9f0735e8d94ba058b3fc0495128,
         type: 3}
+    - target: {fileID: 0}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 2c36a9f0735e8d94ba058b3fc0495128,
         type: 3}
-    - target: {fileID: 4665379144543911904, guid: 519c839a142fead4ebbf5c36562eacfe,
-        type: 3}
+    - target: {fileID: 0}
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
@@ -3102,11 +3020,40 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Card
       objectReference: {fileID: 0}
-    - target: {fileID: 4665379144543911907, guid: 519c839a142fead4ebbf5c36562eacfe,
+    - target: {fileID: 6993118726614563904, guid: 519c839a142fead4ebbf5c36562eacfe,
         type: 3}
-      propertyPath: cardBack
-      value: 
-      objectReference: {fileID: 21300000, guid: 2c36a9f0735e8d94ba058b3fc0495128,
+      propertyPath: m_SpriteTilingProperty.pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6993118726614563904, guid: 519c839a142fead4ebbf5c36562eacfe,
         type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6993118726614563904, guid: 519c839a142fead4ebbf5c36562eacfe,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 4.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 6993118726614563904, guid: 519c839a142fead4ebbf5c36562eacfe,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 7.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 6993118726614563904, guid: 519c839a142fead4ebbf5c36562eacfe,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 4.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 6993118726614563904, guid: 519c839a142fead4ebbf5c36562eacfe,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 7.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 6993118726614563904, guid: 519c839a142fead4ebbf5c36562eacfe,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.adaptiveTilingThreshold
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 519c839a142fead4ebbf5c36562eacfe, type: 3}
