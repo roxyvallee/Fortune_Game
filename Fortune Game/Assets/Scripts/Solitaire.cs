@@ -85,8 +85,11 @@ public class Solitaire : MonoBehaviour
     {
         System.Random random = new System.Random();
         int n = list.Count;
+        int count = 0;
+        int k = -1;
         while(n > 1)
         {
+
             // rajouter ici probabilité pour suit et value
             // probabilité de suit
             // probabilité de value
@@ -97,25 +100,133 @@ public class Solitaire : MonoBehaviour
             // 0 -7-- As-X-2-------------1 rand = X
             // 1 = noir
             // 0 = rouge
-            int k = random.Next(n);
+           
+            //
+            //int k = random.Next(n);
+            
+            while(k < 0)
+            {
+                string lois =  Bernouilli(0.5f).ToString() + Geometric(0.5f,count).ToString();
+                //print("lois " + lois);
+                int number = LoisDiscrete();
+                //print(ValueCard(lois, number));
+                k = FindIndex(ValueCard(lois,number));
+                count ++;
+            }
+            print("index trouvé : " + k);
+           
             n--;
             T temp = list[k];
             list[k] = list[n];
             list[n] = temp;
+            
+            k = -1;
+            
+           
+        }
+
+        print("valeur du tirage " + count);
+    }
+
+    public static int Bernouilli(float p) // on peut modifier le paramètre p // pour trouver la couleur de la carte
+    {
+        float rand = Random.Range(0.0f, 1.0f);
+        if(rand > p)
+        {
+            return 1; // carte noire
+        }
+        else 
+        {
+            return 0; // carte rouge
         }
     }
-    /*
-    public static int FindIndex(List<T> list, string card)
+
+    public static int Geometric(float p, int n) // n s'accrémente à chaque tirage // pour trouver la famille de la carte
     {
+        float rand = Random.Range(0.0f, 1.0f);
+        if(rand > p*Mathf.Pow(n-1, 1.0f - p))
+        {
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
+    public static int LoisDiscrete() // pour trouver la valeur de la carte
+    {
+        // on a 13 valeurs posssibles : {A, 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K}
+        // par equiprobabilité p = 1 / 13 pour chaque valeur et Somme des probabilités = 1
+        float rand = Random.Range(0.0f, 1.0f); 
+        float value = rand * 13;
+        return (int)Mathf.Ceil(value); // on arrondit au supérieur pour avoir la valuer K
+
+    }
+
+    public static string ValueCard(string famille, int number)
+    {
+        string suit="";
+        string value= "";
+        if(famille == "10") // clubs
+        {
+            suit = "C";
+        }
+        if(famille == "11") // spades
+        {
+            suit = "S";
+        }
+        if(famille == "01") // heart
+        {
+            suit = "H";
+        }
+        if(famille == "00") // diamonds
+        {
+            suit = "D";
+        }
+        if(number == 1)
+        {
+            value = "A";
+        }
+        if(number == 11)
+        {
+            value = "J";
+        }
+        if(number == 12)
+        {
+            value = "Q";
+        }
+        if(number == 13)
+        {
+            value = "K";
+        }
+        else
+        {
+            value = number.ToString();
+        }
+
+        return suit+value;
+    }
+    
+    public int FindIndex(string card)
+    {
+        int index = 0;
         foreach(string s in deck)
         {
             // si on trouve la carte
-            if()
+            if(s == card)
+            {
+                return index;
+            }
+            else
+            {
+                index ++;
+            }
         }
         return -1;
         // si on trouve pas la carte on doit recommencer
     }
-    */
+    
 
     void SolitaireSort()
     {
