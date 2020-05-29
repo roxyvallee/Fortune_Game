@@ -965,6 +965,7 @@ GameObject:
   - component: {fileID: 658078523}
   - component: {fileID: 658078522}
   - component: {fileID: 658078521}
+  - component: {fileID: 658078524}
   m_Layer: 5
   m_Name: Facile Button
   m_TagString: Untagged
@@ -1031,7 +1032,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 658078522}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 658078524}
+        m_MethodName: ChoseLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &658078522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1067,6 +1079,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 658078519}
   m_CullTransparentMesh: 0
+--- !u!114 &658078524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 658078519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 667d0a285bfa54a4ebabe61b27352f7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chosenlevel: 2
 --- !u!1 &665267270
 GameObject:
   m_ObjectHideFlags: 0

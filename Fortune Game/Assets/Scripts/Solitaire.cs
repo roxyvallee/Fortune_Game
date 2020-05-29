@@ -30,18 +30,38 @@ public class Solitaire : MonoBehaviour
     private int deckLocation; // où on se trouve dans le deck
     private int trips;
     private int tripsRemainder;
+    private float parameter = 0.5f;
     // Start is called before the first frame update
     void Start()
     {
         bottoms = new List<string>[] {bottom0, bottom1, bottom2, bottom3, bottom4, bottom5, bottom6}; 
         print("begin party");
         PlayCards();
+        SetParameter();
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void SetParameter()
+    {
+        int level = FindObjectOfType<Level>().ReturnLevel();
+        if(level == 1)
+        {
+            parameter = 0.5f;
+        }
+        if(level == 2)
+        {
+            parameter = 0.25f;
+        }
+        if(level == 3)
+        {
+            parameter = 0.75f;
+        }
+        print("parameter : " + parameter);
     }
     
     public void PlayCards()
@@ -106,14 +126,14 @@ public class Solitaire : MonoBehaviour
             
             while(k < 0)
             {
-                string lois =  Bernouilli(0.5f).ToString() + Geometric(0.5f,count).ToString();
+                string lois =  Bernouilli().ToString() + Geometric(count).ToString();
                 //print("lois " + lois);
                 int number = LoisDiscrete();
                 //print(ValueCard(lois, number));
                 k = FindIndex(ValueCard(lois,number));
                 count ++;
             }
-            print("index trouvé : " + k);
+            //print("index trouvé : " + k);
            
             n--;
             T temp = list[k];
@@ -128,10 +148,10 @@ public class Solitaire : MonoBehaviour
         print("valeur du tirage " + count);
     }
 
-    public static int Bernouilli(float p) // on peut modifier le paramètre p // pour trouver la couleur de la carte
+    public int Bernouilli() // on peut modifier le paramètre p // pour trouver la couleur de la carte
     {
         float rand = Random.Range(0.0f, 1.0f);
-        if(rand > p)
+        if(rand > parameter)
         {
             return 1; // carte noire
         }
@@ -141,10 +161,10 @@ public class Solitaire : MonoBehaviour
         }
     }
 
-    public static int Geometric(float p, int n) // n s'accrémente à chaque tirage // pour trouver la famille de la carte
+    public int Geometric( int n) // n s'accrémente à chaque tirage // pour trouver la famille de la carte
     {
         float rand = Random.Range(0.0f, 1.0f);
-        if(rand > p*Mathf.Pow(n-1, 1.0f - p))
+        if(rand > parameter*Mathf.Pow(n-1, 1.0f - parameter))
         {
             return 1;
         }

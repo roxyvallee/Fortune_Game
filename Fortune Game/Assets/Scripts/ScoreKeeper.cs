@@ -27,7 +27,7 @@ public class ScoreKeeper : MonoBehaviour
         foreach(Selectable topstack in topStacks)
         {
             i+= topstack.value;
-            print(topstack.value);
+            //print(topstack.value);
         }
         if( i >= 52)
         {
