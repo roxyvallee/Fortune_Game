@@ -303,7 +303,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
@@ -554,9 +554,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 134092844}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 296c9f14b2de71c41b73d37900bafb20, type: 3}
+  m_Script: {fileID: 11500000, guid: 667d0a285bfa54a4ebabe61b27352f7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenlevel: 3
 --- !u!114 &134092847
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -598,7 +599,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 134092846}
-        m_MethodName: hasquit
+        m_MethodName: ChoseLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1091,7 +1092,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 667d0a285bfa54a4ebabe61b27352f7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chosenlevel: 2
+  chosenlevel: 1
 --- !u!1 &665267270
 GameObject:
   m_ObjectHideFlags: 0
@@ -1104,6 +1105,7 @@ GameObject:
   - component: {fileID: 665267274}
   - component: {fileID: 665267273}
   - component: {fileID: 665267272}
+  - component: {fileID: 665267275}
   m_Layer: 5
   m_Name: Medium Button
   m_TagString: Untagged
@@ -1170,7 +1172,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 665267273}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 665267275}
+        m_MethodName: ChoseLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &665267273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1206,6 +1219,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 665267270}
   m_CullTransparentMesh: 0
+--- !u!114 &665267275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 665267270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 667d0a285bfa54a4ebabe61b27352f7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chosenlevel: 2
 --- !u!1 &786468005
 GameObject:
   m_ObjectHideFlags: 0
