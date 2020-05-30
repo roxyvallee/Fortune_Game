@@ -8,6 +8,8 @@ public class DialogueManager : MonoBehaviour {
 	public Text nameText;
 	public Text dialogueText;
 
+	public GameObject DialogueBox;
+
 	public Animator animator;
 
 	// On va faire une list
@@ -17,13 +19,32 @@ public class DialogueManager : MonoBehaviour {
 
 	private int sizeTabBinomiale = 10;
 	private float[] tabBinomiale;
-
+	private float parameter = 0.1f;
 	// Use this for initialization
 	void Start () 
 	{
+		
 		sentences = new List<string>();
 	}
 
+	public void SetParameter()
+    {
+        int level = FindObjectOfType<Level>().ReturnLevel();
+        if(level == 1)
+        {
+            parameter = 0.1f;
+        }
+        if(level == 2)
+        {
+            parameter = 0.5f;
+        }
+        if(level == 3)
+        {
+            parameter = 0.75f;
+        }
+        print("parameter : " + parameter);
+    }
+    
 	public static float Factoriel(float n) 
     {
     	return n > 1?n * Factoriel(n-1):1;
@@ -43,14 +64,39 @@ public class DialogueManager : MonoBehaviour {
 		tabBinomiale = new float[sizeTabBinomiale];
 		for(int i=0; i < sizeTabBinomiale ; i++){
 			tabBinomiale[i] = binomiale(0.1f, sizeTabBinomiale, i);
-			print(tabBinomiale[i]);
+		}
+		orderTable();
+	}
+
+	private void printTable()
+	{
+		foreach(float var in tabBinomiale)
+		{
+			print("tab : " + var);
 		}
 	}
 
+	private void orderTable()
+	{
+		for(int i = 0; i < sizeTabBinomiale; i++)
+		{
+			for(int j = 0; j < sizeTabBinomiale; j++)
+			if(tabBinomiale[i] < tabBinomiale[j])
+			{
+				float tmp = tabBinomiale[i];
+				tabBinomiale[i] = tabBinomiale[j];
+				tabBinomiale[j] = tmp;
+				j--;
+			}
+		}
+
+		printTable();
+	}
 	private int returnIndexBinomiale(){
 		float rand = Random.Range(0.000000000f, 1.000000000f);
+		//print("rand : " + rand);
 		for(int i=0; i < sizeTabBinomiale ; i++){
-			if(rand >= tabBinomiale[i] * 100){
+			if(rand <= tabBinomiale[i]){
 				return i;
 			}
 		}
@@ -61,13 +107,13 @@ public class DialogueManager : MonoBehaviour {
 	public void StartDialogue (Dialogue dialogueGood, Dialogue dialogueBad)
 	{
 		animator.SetBool("IsOpen", true);
+		DialogueBox.SetActive(true);
 
 		nameText.text = dialogueGood.name;
 
 		sentences.Clear();
 
 		loiBinomiale();
-
 		int goodSentence = -1;
 
 		while(goodSentence < 0){
@@ -128,5 +174,6 @@ public class DialogueManager : MonoBehaviour {
 	void EndDialogue()
 	{
 		animator.SetBool("IsOpen", false);
+		DialogueBox.SetActive(false);
 	}
 }

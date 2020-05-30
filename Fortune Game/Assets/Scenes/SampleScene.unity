@@ -3324,6 +3324,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1590162249}
   - component: {fileID: 1590162248}
+  - component: {fileID: 1590162250}
   m_Layer: 0
   m_Name: DialogueManager
   m_TagString: Untagged
@@ -3345,6 +3346,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameText: {fileID: 628926023}
   dialogueText: {fileID: 826728278}
+  DialogueBox: {fileID: 1800797542}
   animator: {fileID: 1800797544}
 --- !u!4 &1590162249
 Transform:
@@ -3360,6 +3362,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1590162250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1590162247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 667d0a285bfa54a4ebabe61b27352f7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chosenlevel: 0
 --- !u!1 &1598629032
 GameObject:
   m_ObjectHideFlags: 0
@@ -3706,7 +3721,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1800797543
 RectTransform:
   m_ObjectHideFlags: 0

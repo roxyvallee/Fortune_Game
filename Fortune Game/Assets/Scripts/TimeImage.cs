@@ -7,10 +7,12 @@ public class TimeImage : MonoBehaviour
     public GameObject imageGood;
     public GameObject imageBad;
     private int currentTime;
+    private int parameter = 1;
     // Start is called before the first frame update
     void Start()
     {
        currentTime = 0; 
+       
     }
 
     private bool loiUniformeContinue(int a, int b, int c, int d)
@@ -31,7 +33,8 @@ public class TimeImage : MonoBehaviour
         // Obtain the current time.
         //int currentTime = (int)Time.time;
         //print("Time is: " + currentTime.ToString() + " sec.");
-        if(currentTime%1000 == 0)
+        parameter = FindObjectOfType<Level>().ReturnLevel();
+        if(currentTime%(500*parameter) == 0)
         {
             if(loiUniformeContinue(0, currentTime, 0, currentTime/2) == true)
             {
