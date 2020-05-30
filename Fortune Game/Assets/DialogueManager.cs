@@ -10,35 +10,84 @@ public class DialogueManager : MonoBehaviour {
 
 	public Animator animator;
 
-	// Queue = systeme de FIFO
-	private Queue<string> sentences;
+	// On va faire une list
+	private List<string> sentences;
 
-	// On va faire une arraylist
-	//private Arraylist<string> sentences;
+	private int cpt;
+
+	private int sizeTabBinomiale = 10;
+	private float[] tabBinomiale;
 
 	// Use this for initialization
-	void Start () {
-		sentences = new Queue<string>();
-
-		//sentences = new Arraylist<string>();
+	void Start () 
+	{
+		sentences = new List<string>();
 	}
 
-	// Display the first sentence of the dialogue
-	// Ici on peut laisser toujours la même
-	public void StartDialogue (Dialogue dialogue)
+	public static float Factoriel(float n) 
+    {
+    	return n > 1?n * Factoriel(n-1):1;
+    }
+
+    public static float Combination(int n, int k)
+    {
+        return Factoriel(n)/ (Factoriel(k)*Factoriel(n-k));
+    }
+
+	private float binomiale(float p, int n, int k){
+		float nk = Combination(n, k);
+		return nk * Mathf.Pow(p, k) * Mathf.Pow((1 - p), n - k);
+	}
+
+	private void loiBinomiale(){
+		tabBinomiale = new float[sizeTabBinomiale];
+		for(int i=0; i < sizeTabBinomiale ; i++){
+			tabBinomiale[i] = binomiale(0.1f, sizeTabBinomiale, i);
+			print(tabBinomiale[i]);
+		}
+	}
+
+	private int returnIndexBinomiale(){
+		float rand = Random.Range(0.000000000f, 1.000000000f);
+		for(int i=0; i < sizeTabBinomiale ; i++){
+			if(rand >= tabBinomiale[i] * 100){
+				return i;
+			}
+		}
+		return -1;
+	}
+	
+
+	public void StartDialogue (Dialogue dialogueGood, Dialogue dialogueBad)
 	{
 		animator.SetBool("IsOpen", true);
 
-		nameText.text = dialogue.name;
+		nameText.text = dialogueGood.name;
 
 		sentences.Clear();
 
-		foreach (string sentence in dialogue.sentences)
-		{
-			// Display the first element of the queue
-			sentences.Enqueue(sentence);
+		loiBinomiale();
+
+		int goodSentence = -1;
+
+		while(goodSentence < 0){
+			goodSentence = returnIndexBinomiale();
+			print("goodsentence : " + goodSentence);
 		}
 
+		int badSentence = sizeTabBinomiale - goodSentence;
+
+		for (int i = 0; i < goodSentence; i++)
+        {
+            sentences.Add(dialogueGood.sentences[i]);
+        }
+
+        for (int i = 0; i < badSentence; i++)
+        {
+            sentences.Add(dialogueBad.sentences[i]);
+        }
+
+		cpt = sentences.Count;
 		DisplayNextSentence();
 	}
 
@@ -46,16 +95,24 @@ public class DialogueManager : MonoBehaviour {
 	public void DisplayNextSentence ()
 	{
 		// If there is no more sentences, the dialogue is end
-		if (sentences.Count == 0)
+		if (cpt == 0)
 		{
 			EndDialogue();
 			return;
 		}
 
 		// Display the next sentences
-		string sentence = sentences.Dequeue();
-		StopAllCoroutines();
-		StartCoroutine(TypeSentence(sentence));
+		int rand = Random.Range(0, sentences.Count);
+		int index = 0;
+		foreach(string value in sentences){
+			if(index == rand){
+				string sentence = value;
+				StopAllCoroutines();
+				StartCoroutine(TypeSentence(sentence));
+			}
+			index++;
+		}
+		cpt--;
 	}
 
 	IEnumerator TypeSentence (string sentence)
@@ -72,5 +129,4 @@ public class DialogueManager : MonoBehaviour {
 	{
 		animator.SetBool("IsOpen", false);
 	}
-
 }

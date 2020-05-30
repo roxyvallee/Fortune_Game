@@ -235,7 +235,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &358417169
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1231,12 +1231,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00ddd33eae28b5148a72170d47ccd942, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue:
-    name: Mary, la voyante
+  dialogueGood:
+    name: Mary, la gentille voyante
     sentences:
-    - Bonjour toi, je suis Mary la voyante...
-    - Je suis ici pour te guider dans cette dangeureuse aventure...
-    - "Donc pr\xE9pare toi au grand voyage !"
+    - Test 0 good
+    - Test 1 good
+    - Test 2 good
+    - Test 3 good
+    - Test 4 good
+    - Test 5 good
+    - Test 6 good
+    - Test 7 good
+    - Test 8 good
+    - Test 9 good
+  dialogueBad:
+    name: "Mary, la m\xE9chante voyante"
+    sentences:
+    - Test 0 bad
+    - Test 1 bad
+    - Test 2 bad
+    - Test 3 bad
+    - Test 4 bad
+    - Test 5 bad
+    - Test 6 bad
+    - Test 7 bad
+    - Test 8 bad
+    - Test 9 bad
 --- !u!1 &1845476595
 GameObject:
   m_ObjectHideFlags: 0
