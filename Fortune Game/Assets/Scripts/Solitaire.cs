@@ -43,7 +43,7 @@ public class Solitaire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+     
     }
 
     public void SetParameter()
@@ -174,6 +174,8 @@ public class Solitaire : MonoBehaviour
         }
     }
 
+
+   
     public static int LoisDiscrete() // pour trouver la valeur de la carte
     {
         // on a 13 valeurs posssibles : {A, 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K}
@@ -246,6 +248,9 @@ public class Solitaire : MonoBehaviour
         return -1;
         // si on trouve pas la carte on doit recommencer
     }
+
+
+    
     
 
     void SolitaireSort()
