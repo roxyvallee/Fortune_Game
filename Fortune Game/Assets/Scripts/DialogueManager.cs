@@ -20,6 +20,8 @@ public class DialogueManager : MonoBehaviour {
 	private int sizeTabBinomiale = 10;
 	private float[] tabBinomiale;
 	private float parameter = 0.1f;
+
+	private int[] indexBinomial;
 	// Use this for initialization
 	void Start () 
 	{
@@ -32,7 +34,7 @@ public class DialogueManager : MonoBehaviour {
         int level = FindObjectOfType<Level>().ReturnLevel();
         if(level == 1)
         {
-            parameter = 0.1f;
+            parameter = 0.8f;
         }
         if(level == 2)
         {
@@ -40,7 +42,7 @@ public class DialogueManager : MonoBehaviour {
         }
         if(level == 3)
         {
-            parameter = 0.75f;
+            parameter = 0.2f;
         }
 		print("level : " + level);
         print("parameter : " + parameter);
@@ -64,7 +66,7 @@ public class DialogueManager : MonoBehaviour {
 	private void loiBinomiale(){
 		tabBinomiale = new float[sizeTabBinomiale];
 		for(int i=0; i < sizeTabBinomiale ; i++){
-			tabBinomiale[i] = binomiale(0.1f, sizeTabBinomiale, i);
+			tabBinomiale[i] = binomiale(parameter, sizeTabBinomiale, i);
 		}
 		orderTable();
 	}
@@ -77,13 +79,29 @@ public class DialogueManager : MonoBehaviour {
 		}
 	}
 
+	private void indexTab()
+	{
+		indexBinomial = new int[sizeTabBinomiale];
+		for(int i = 0; i < sizeTabBinomiale; i ++)
+		{
+			indexBinomial[i] = i;
+		}
+	}
+
 	private void orderTable()
 	{
+		indexTab();
 		for(int i = 0; i < sizeTabBinomiale; i++)
 		{
 			for(int j = 0; j < sizeTabBinomiale; j++)
 			if(tabBinomiale[i] < tabBinomiale[j])
 			{
+				// changer la position de l'index
+				int index = indexBinomial[i];
+				indexBinomial[i] = indexBinomial[j];
+				indexBinomial[j] = index;
+
+				// changer la position de la proba
 				float tmp = tabBinomiale[i];
 				tabBinomiale[i] = tabBinomiale[j];
 				tabBinomiale[j] = tmp;
@@ -98,7 +116,7 @@ public class DialogueManager : MonoBehaviour {
 		//print("rand : " + rand);
 		for(int i=0; i < sizeTabBinomiale ; i++){
 			if(rand <= tabBinomiale[i]){
-				return i;
+				return indexBinomial[i];
 			}
 		}
 		return -1;
