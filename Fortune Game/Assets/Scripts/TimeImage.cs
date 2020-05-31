@@ -8,10 +8,12 @@ public class TimeImage : MonoBehaviour
     public GameObject imageGood;
     public GameObject imageBad;
     private int currentTime;
-    private int parameter = 1;
+
     private int begin = 0;
     private int fin = 10;
     private int middle = 5;
+
+    private float parameter = 0.1f;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,10 +23,16 @@ public class TimeImage : MonoBehaviour
 
     public void changeIntervalle(float value)
     {
+        parameter = value;
         float intervalle = value * (fin-begin) + begin;
         middle = (int)intervalle;
         //print("middle : " + middle);
 
+    }
+
+    public float ReturnParameter()
+    {
+        return parameter;
     }
     private bool loiUniformeContinue(int a, int b, int c, int d)
     {
@@ -44,8 +52,7 @@ public class TimeImage : MonoBehaviour
         // Obtain the current time.
         //int currentTime = (int)Time.time;
         //print("Time is: " + currentTime.ToString() + " sec.");
-        parameter = FindObjectOfType<Level>().ReturnLevel();
-        if(currentTime%500 == 0)
+        if(currentTime%100 == 0)
         {
             if(loiUniformeContinue(begin, fin, begin, middle) == true)
             {

@@ -31,6 +31,7 @@ public class DialogueManager : MonoBehaviour {
 
 	public void SetParameter()
     {
+		/*
         int level = FindObjectOfType<Level>().ReturnLevel();
         if(level == 1)
         {
@@ -43,8 +44,9 @@ public class DialogueManager : MonoBehaviour {
         if(level == 3)
         {
             parameter = 0.2f;
-        }
-		print("level : " + level);
+        }*/
+	
+		parameter = 1.0f - FindObjectOfType<TimeImage>().ReturnParameter();
         print("parameter : " + parameter);
     }
     
