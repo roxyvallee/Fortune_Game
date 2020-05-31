@@ -126,7 +126,7 @@ public class Solitaire : MonoBehaviour
             
             while(k < 0)
             {
-                string lois =  Bernouilli().ToString() + Geometric(count).ToString();
+                string lois =  Bernoulli().ToString() + Geometric(count).ToString();
                 //print("lois " + lois);
                 int number = LoisDiscrete();
                 //print(ValueCard(lois, number));
@@ -148,7 +148,7 @@ public class Solitaire : MonoBehaviour
         print("valeur du tirage " + count);
     }
 
-    public int Bernouilli() // on peut modifier le paramètre p // pour trouver la couleur de la carte
+    public int Bernoulli() // on peut modifier le paramètre p // pour trouver la couleur de la carte
     {
         float rand = Random.Range(0.0f, 1.0f);
         if(rand > parameter)
