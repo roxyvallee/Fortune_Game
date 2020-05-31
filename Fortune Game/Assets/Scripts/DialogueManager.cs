@@ -42,6 +42,7 @@ public class DialogueManager : MonoBehaviour {
         {
             parameter = 0.75f;
         }
+		print("level : " + level);
         print("parameter : " + parameter);
     }
     
@@ -90,7 +91,7 @@ public class DialogueManager : MonoBehaviour {
 			}
 		}
 
-		printTable();
+		//printTable();
 	}
 	private int returnIndexBinomiale(){
 		float rand = Random.Range(0.000000000f, 1.000000000f);
@@ -108,6 +109,7 @@ public class DialogueManager : MonoBehaviour {
 	{
 		animator.SetBool("IsOpen", true);
 		DialogueBox.SetActive(true);
+		SetParameter();
 
 		nameText.text = dialogueGood.name;
 
@@ -148,10 +150,10 @@ public class DialogueManager : MonoBehaviour {
 		}
 
 		// Display the next sentences
-		int rand = Random.Range(0, sentences.Count);
+		//int rand = Random.Range(0, sentences.Count);
 		int index = 0;
 		foreach(string value in sentences){
-			if(index == rand){
+			if(index == cpt){
 				string sentence = value;
 				StopAllCoroutines();
 				StartCoroutine(TypeSentence(sentence));

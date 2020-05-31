@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TimeImage : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class TimeImage : MonoBehaviour
     public GameObject imageBad;
     private int currentTime;
     private int parameter = 1;
+    private int begin = 0;
+    private int fin = 10;
+    private int middle = 5;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +19,13 @@ public class TimeImage : MonoBehaviour
        
     }
 
+    public void changeIntervalle(float value)
+    {
+        float intervalle = value * (fin-begin) + begin;
+        middle = (int)intervalle;
+        //print("middle : " + middle);
+
+    }
     private bool loiUniformeContinue(int a, int b, int c, int d)
     {
         float rand = Random.Range(0.0f, 1.0f)* (b-a) + a; 
@@ -34,10 +45,11 @@ public class TimeImage : MonoBehaviour
         //int currentTime = (int)Time.time;
         //print("Time is: " + currentTime.ToString() + " sec.");
         parameter = FindObjectOfType<Level>().ReturnLevel();
-        if(currentTime%(500*parameter) == 0)
+        if(currentTime%500 == 0)
         {
-            if(loiUniformeContinue(0, currentTime, 0, currentTime/2) == true)
+            if(loiUniformeContinue(begin, fin, begin, middle) == true)
             {
+                //print("bad");
                 imageGood.SetActive(false);
                 imageBad.SetActive(true);
                 
