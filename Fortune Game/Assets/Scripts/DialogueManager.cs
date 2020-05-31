@@ -45,8 +45,14 @@ public class DialogueManager : MonoBehaviour {
         {
             parameter = 0.2f;
         }*/
-	
-		parameter = 1.0f - FindObjectOfType<TimeImage>().ReturnParameter();
+
+		float value = FindObjectOfType<TimeImage>().ReturnParameter();
+		if(value == 0.0f)
+		{
+			value = 0.01f;
+		}
+
+		parameter = 1.0f - value;
         print("parameter : " + parameter);
     }
     
